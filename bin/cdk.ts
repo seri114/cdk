@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { CdkStack } from '../lib/cdk-stack';
+// import { CdkStack } from '../lib/cdk-stack';
+// import { S3ToTeamsStack } from '../lib/s3-to-teams';
+import { S3ToCloudFrontStack } from '../lib/cdk-stack2';
 
 const app = new cdk.App();
-new CdkStack(app, 'CdkStack', {
+new S3ToCloudFrontStack(app, 'S3ToCloudFrontStack', {
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,
    * but a single synthesized template can be deployed anywhere. */

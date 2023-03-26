@@ -16,6 +16,7 @@
       "test"
     ]
   },
+  "websocket-url": 	"https://webhook.site/5abb3f13-ccb2-4123-9294-bec4606d183f",
   "context": {
     "@aws-cdk/aws-lambda:recognizeLayerVersion": true,
     "@aws-cdk/core:checkSecretUsage": true,
