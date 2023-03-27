@@ -26,9 +26,6 @@ export async function handler(event: any, context: any) {
   const postData = JSON.stringify(teamsMessage);
 
   const options = {
-    host: 'webhook.site',
-    path: '/5abb3f13-ccb2-4123-9294-bec4606d183f',
-    port: 443,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -37,32 +34,21 @@ export async function handler(event: any, context: any) {
   };
 
   console.log(`teamsWebhookUrl:${teamsWebhookUrl}  options:${JSON.stringify(options)} postData:${postData}`)
-  // const req = https.request(options, (res) => {
-  //   console.log(`statusCode: ${res.statusCode}`);
-  //   res.on('data', (d) => {
-  //     process.stdout.write(d);
-  //   });
-  // });
 
-  // req.on('error', (error) => {
-  //   console.error(error);
-  // });
-
-  // req.write(postData);
-  // req.end();
 
   return new Promise((resolve, reject) => {
-    const request = https.request(options, (response) => {
+    const request = https.request(teamsWebhookUrl, options, (response) => {
+      response.setEncoding('utf8');
       let body = '';
+
 
       response.on('data', (chunk) => {
         body += chunk;
       });
 
       response.on('end', () => {
-        const responseBody = JSON.parse(body);
-        console.log(responseBody);
-        resolve(responseBody);
+        console.log(body)
+        resolve(body)
       });
     });
 
