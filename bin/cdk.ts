@@ -4,6 +4,7 @@ import * as cdk from 'aws-cdk-lib';
 // import { CdkStack } from '../lib/cdk-stack';
 // import { S3ToTeamsStack } from '../lib/s3-to-teams';
 import { S3ToCloudFrontStack } from '../lib/cdk-stack2';
+import { WebAccessLoggingStack } from '../lib/WebAccessLoggingStack';
 
 const app = new cdk.App();
 new S3ToCloudFrontStack(app, 'S3ToCloudFrontStack', {
@@ -21,3 +22,5 @@ new S3ToCloudFrontStack(app, 'S3ToCloudFrontStack', {
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
 });
+
+new WebAccessLoggingStack(app, "WebAccessLoggingStack")

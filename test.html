@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+  </head>
+  <body>
+    hello
+    <script>
+      var scriptSrc = [
+        'test.js',
+      ];
+      scriptSrc.forEach(function(file) {
+        var scriptSrc;
+        if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+            scriptSrc = file;
+        } else {
+            scriptSrc = `https://example.com/${file}`;
+        }
+        var script = document.createElement('script');
+        script.src = scriptSrc;
+        script.defer = true;
+        document.head.appendChild(script);
+      })
+    </script>
+  </body>
+</html>

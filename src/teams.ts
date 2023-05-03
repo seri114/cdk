@@ -7,19 +7,10 @@ export async function handler(event: any, context: any) {
   const objectUrl = `https://${bucketName}.s3.amazonaws.com/${objectKey}`;
 
   const teamsMessage = {
-    '@type': 'MessageCard',
-    '@context': 'https://schema.org/extensions',
-    summary: 'New S3 Object Uploaded',
-    themeColor: '0078D7',
-    sections: [
-      {
-        activityTitle: `New S3 object uploaded to bucket ${bucketName}`,
-        activitySubtitle: objectKey,
-        activityImage: 'https://www.gravatar.com/avatar/00000000000000000000000000000000',
-        text: objectUrl,
-      },
-    ],
+    type: 'message',
+    text: `[${objectKey}](${objectUrl}) がアップロードされました。`,
   };
+  
 
   const teamsWebhookUrl = process.env.WEBHOOK_URL as string;
 

@@ -1,0 +1,26 @@
+select A left join (select B)
+
+要件
+1. select A の方でwhereやselect対象にB:col を書いたら、自動でBおよび途中経路のselect対象にcolを追加してくれる。
+2. aliasを参照するか、
+2. 経路も複数経路ある場合は、経路を指定してくれる。
+3. 自動でaliasを追加してくれる。
+
+type Col struct{
+    table string
+    col string
+    Gt() Expression
+    Lt() Expression
+}
+
+type Expression struct{
+    Col
+    And(Expression, Expression)
+}
+
+type Table struct{
+  addCol(col)
+  addWhere(col )
+  leftJoin(Table, ons...)
+  fullOuterJoin()
+}
